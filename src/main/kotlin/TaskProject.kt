@@ -75,9 +75,9 @@ class CompletedTasksProject(projectID: Int, title : String) : TaskProject(projec
             val longestTask = getLongestTaskInProject()
             val dashCount = createDashes(longestTask.title.length)
             for (task: Task in tasksInProject) {
-                println("$dashCount\n" +
-                        "Title: ${task.title}\nDue date: ${task.dueDateformatted}\nDate to do: ${task.dateToDoFormatted}\nPriority: ${task.priorityLevel}" +
-                        "\n$dashCount")
+                print(dashCount)
+                println(task)
+                print(dashCount)
             }
         }
     }
