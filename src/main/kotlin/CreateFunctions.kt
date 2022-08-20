@@ -55,7 +55,7 @@ class CreateFunctions() {
     fun createProject(projectList: ArrayList<TaskProject>): TaskProject {
         println("Give your project a name: ")
         val name = readln()
-        return ProjectFactory.createProject(selector.getNextAvailableProjectId(projectList), name)
+        return ProjectFactory.TaskProjectFactory(selector.getNextAvailableProjectId(projectList), name)
     }
 
     fun createDateWithoutTime(stringDateChars: String): LocalDate {
