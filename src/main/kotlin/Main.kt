@@ -41,5 +41,5 @@ fun main() {
 
     val taskManagerInstance = TaskManager(projectList, completedTasks)
 
-    taskManagerInstance.userMenu()
+    taskManagerInstance.start()
 }
