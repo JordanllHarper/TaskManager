@@ -16,7 +16,7 @@ open class Task(
     override var projectId: Int = 1,
     override var priorityLevel: PriorityLevel = PriorityLevel.P4,
     private val dueDate: LocalDate? = null,
-    private var dateToDo: LocalDate? = null,
+    private val dateToDo: LocalDate? = null,
 
     val localDate: DateTimeFormatter? = DateTimeFormatter.ofPattern("dd MM yyyy")
 
@@ -42,15 +42,24 @@ open class Task(
     val dateToDoFormatted: String
         get() {
             return if (dateToDo == null) {
-                ("No date to do")
+                ("No date")
             } else {
-                dateToDo.toString()
+                var dateToDoString: String = dateToDo.format(localDate).trim()
+                for (character in dateToDoString) {
+                    if (character == ' ') {
+                        dateToDoString = dateToDoString.replace(character, '/')
+                    }
+                }
+                return dateToDoString
             }
         }
 
 
     override fun toString(): String {
-        return "ID: $taskID\nTitle: $title\nDue Date: $dueDateformatted\nPriority: $priorityLevel"
+
+        return "ID: ${taskID}\nTitle: $title\nDue Date: $dueDateformatted\nDate to do: ${dateToDoFormatted}\n" +
+                "Priority: $priorityLevel"
+
     }
 
 

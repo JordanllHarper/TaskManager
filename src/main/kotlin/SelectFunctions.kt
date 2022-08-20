@@ -6,6 +6,7 @@ import kotlin.collections.ArrayList
 
 class SelectFunctions() {
     val printer = PrintFunctions()
+
     fun determinePriorityLevel(stringPriorityLevel: String): PriorityLevel {
         return when (stringPriorityLevel) {
             "1" -> PriorityLevel.P1
@@ -21,6 +22,7 @@ class SelectFunctions() {
     }
 
     private fun selectProject(projectIdWanted: Int, projectList: ArrayList<TaskProject>): TaskProject {
+
         for (project in projectList) {
             if (projectIdWanted == project.projectID) {
                 return project
@@ -89,8 +91,13 @@ class SelectFunctions() {
     }
 
     fun getNextAvailableTaskId(project: TaskProject): Int {
-        return project.tasksInProject.get(project.tasksInProject.size - 1).taskID + 1
+        return if (project.getCountOfTasks() == 0) {
+            1
+        } else {
+            project.tasksInProject.get(project.tasksInProject.size - 1).taskID + 1
+        }
     }
+
 
     fun getNextAvailableProjectId(projectList: ArrayList<TaskProject>): Int {
         return projectList.get(projectList.size - 1).projectID + 1
