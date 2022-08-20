@@ -102,4 +102,19 @@ class SelectFunctions() {
     fun getNextAvailableProjectId(projectList: ArrayList<TaskProject>): Int {
         return projectList.get(projectList.size - 1).projectID + 1
     }
+
+    fun selectAttributeToEdit(task: Task): TaskAttributes {
+        println("Which attribute would you like to edit?")
+        while (true) {
+            println(task)
+            when (readln().trim().lowercase()) {
+                "title" -> return TaskAttributes.TITLE
+                "priority level" -> return TaskAttributes.PRIORITYLEVEL
+                "due date" -> return TaskAttributes.DUEDATE
+                "date to do" -> return TaskAttributes.DATETODO
+            }
+            println("Invalid select, please try again")
+        }
+
+    }
 }

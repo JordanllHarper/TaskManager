@@ -28,12 +28,12 @@ class TaskBuilder() {
         returnTask()
     }
 
-    fun addDueDate(newDate: LocalDate) {
+    fun addDueDate(newDate: LocalDate?) {
         this.dueDate = newDate
         returnTask()
     }
 
-    fun addDateToDo(newDate: LocalDate) {
+    fun addDateToDo(newDate: LocalDate?) {
         this.dateToDo = newDate
         returnTask()
     }

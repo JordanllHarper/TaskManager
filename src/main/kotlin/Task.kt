@@ -15,49 +15,36 @@ open class Task(
     override var title: String = "no_title",
     override var projectId: Int = 1,
     override var priorityLevel: PriorityLevel = PriorityLevel.P4,
-    private val dueDate: LocalDate? = null,
-    private val dateToDo: LocalDate? = null,
+    var dueDate: LocalDate? = null,
+    var dateToDo: LocalDate? = null,
 
     val localDate: DateTimeFormatter? = DateTimeFormatter.ofPattern("dd MM yyyy")
 
 
 ) : TaskInterface {
 
-    val dueDateformatted: String
-        get() {
-            return if (dueDate == null) {
-                ("No date")
-            } else {
-                var dueDateString: String = dueDate.format(localDate).trim()
-                for (character in dueDateString) {
-                    if (character == ' ') {
-                        dueDateString = dueDateString.replace(character, '/')
-                    }
+    fun getDateFormatted(dateToFormat: LocalDate?): String {
+        return if (dateToFormat == null) {
+            ("No date")
+        } else {
+            var dueDateString: String = dateToFormat.format(localDate)
+            for (character in dueDateString) {
+                if (character == ' ') {
+                    dueDateString = dueDateString.replace(character, '/')
                 }
-                return dueDateString
             }
+            dueDateString
         }
-
-    //todo
-    val dateToDoFormatted: String
-        get() {
-            return if (dateToDo == null) {
-                ("No date")
-            } else {
-                var dateToDoString: String = dateToDo.format(localDate).trim()
-                for (character in dateToDoString) {
-                    if (character == ' ') {
-                        dateToDoString = dateToDoString.replace(character, '/')
-                    }
-                }
-                return dateToDoString
-            }
-        }
+    }
 
 
     override fun toString(): String {
 
-        return "ID: ${taskID}\nTitle: $title\nDue Date: $dueDateformatted\nDate to do: ${dateToDoFormatted}\n" +
+        return "ID: ${taskID}\nTitle: $title\nDue Date: ${getDateFormatted(dueDate)}\nDate to do: ${
+            getDateFormatted(
+                dateToDo
+            )
+        }\n" +
                 "Priority: $priorityLevel"
 
     }
