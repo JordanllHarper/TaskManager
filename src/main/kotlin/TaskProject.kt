@@ -20,8 +20,6 @@ open class TaskProject(
 
     val creator = CreateFunctions()
 
-    val creator = CreateFunctions()
-
     override var tasksInProject: ArrayList<Task> = ArrayList()
 
     open fun viewTasksInProject() {

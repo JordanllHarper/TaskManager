@@ -9,15 +9,13 @@ class Menu(
 ) {
 
 
-
-
     val creator = CreateFunctions()
 
     fun userMenu(): Int {
 
 
         println(
-
+            creator.createDashes(20) +
                     "Press [$viewTaskSelectionNum] to view tasks in a project\n" +
                     "Press [$addTaskSelectionNum] to add a task\n" +
                     "Press [$deleteTaskSelectionNum] to complete/delete a task from a project\n" +
