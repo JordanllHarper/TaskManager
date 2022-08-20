@@ -6,9 +6,10 @@ class TaskBuilder() {
     var title = "no_title"
     var projectId = 1 //inbox
     var priorityLevel = PriorityLevel.P4
-    var date: LocalDate? = null
+    var dueDate: LocalDate? = null
+    var dateToDo: LocalDate? = null
 
-    fun addId(newId : Int){
+    fun addId(newId: Int) {
         this.taskID = newId
     }
 
@@ -17,7 +18,7 @@ class TaskBuilder() {
         returnTask()
     }
 
-    fun addProjectId(newProjectID : Int){
+    fun addProjectId(newProjectID: Int) {
         this.projectId = newProjectID
         returnTask()
     }
@@ -27,16 +28,19 @@ class TaskBuilder() {
         returnTask()
     }
 
-    fun addDate(newDate : LocalDate) {
-        this.date = newDate
+    fun addDueDate(newDate: LocalDate) {
+        this.dueDate = newDate
         returnTask()
     }
 
-    fun returnTask() : Task{
-        return Task(taskID, title, projectId, priorityLevel, date)
+    fun addDateToDo(newDate: LocalDate) {
+        this.dateToDo = newDate
+        returnTask()
     }
 
-
+    fun returnTask(): Task {
+        return Task(taskID, title, projectId, priorityLevel, dueDate)
+    }
 
 
 }

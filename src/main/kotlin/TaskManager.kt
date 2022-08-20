@@ -1,6 +1,4 @@
-import java.lang.IndexOutOfBoundsException
 
-import java.util.InputMismatchException
 
 open class TaskManager(private var projectList: ArrayList<TaskProject>, private var completedTasks: TaskProject) {
     private val viewTaskSelectionNum = 1
@@ -13,7 +11,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
 
     private val creator = CreateFunctions()
     private val selector = SelectFunctions()
-    private val printer = PrintFunctions()
+    private val deleterCompleter = DeleteCompleteFunctions()
 
     fun start() {
         var programRun = true
@@ -41,7 +39,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
                 }
 
                 deleteTaskSelectionNum -> {
-                    completeTask()
+                    deleterCompleter.completeTask(projectList, completedTasks)
                     println("Task completed!")
                 }
 
@@ -50,7 +48,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
                     println("Project added")
                 }
 
-                deleteProjectSelectionNum -> deleteProject()
+                deleteProjectSelectionNum -> deleterCompleter.deleteProject(projectList)
                 viewCompletedTasksSelectionNum -> viewAllCompletedTasks()
                 exitSelectionNum -> {
                     println("Exiting")
@@ -61,53 +59,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
     }
 
 
-    private fun completeTask() {
-        println("Which project is the task in?")
 
-        while (true) {
-            val projectSelectionInput = selector.selectProjectWithValidation(projectList)
-
-            println("Which task do you want to complete?")
-            val taskToComplete = selector.selectTaskWithValidation(projectSelectionInput)
-
-            projectSelectionInput.removeTaskFromProject(taskToComplete)
-
-            completedTasks.addTask(taskToComplete)
-
-            break
-
-        }
-
-
-    }
-
-    fun deleteProject() {
-        var validInput = false
-        println("Which project do you want to delete? Type the ID or type any other number to exit!\nNote: you cannot delete the inbox project")
-
-
-        while (!validInput) {
-            println("Which project do you wish to delete?")
-            printer.getProjectPrompt(projectList)
-            val projectSelection = selector.selectProjectWithValidation(projectList)
-
-            if (projectSelection.projectID == 1) {
-                println("Going to main menu...")
-                validInput = true
-            } else {
-                try {
-                    projectList.remove(projectSelection)
-                    validInput = true
-                    println("Project deleted")
-                } catch (e: IndexOutOfBoundsException) {
-                    println("Going to main menu...")
-                    validInput = true
-                } catch (e: InputMismatchException) {
-                    println("Please enter a project ID")
-                }
-            }
-        }
-    }
 
     fun appendTaskToProject(task: Task) {
         for (project in projectList) {

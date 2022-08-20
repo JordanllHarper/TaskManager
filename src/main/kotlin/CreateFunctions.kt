@@ -32,16 +32,36 @@ class CreateFunctions() {
         taskBuilder.addId(currentTaskIdAssignment)
         taskBuilder.addProjectId(projectSelection.projectID)
 
+        println("When is the task due? Enter in DD/MM/YYYY format")
+        while (true) {
+            val dateInput = readln().trim()
+
+            if (dateInput.isNotBlank()) {
+                try {
+                    taskBuilder.addDueDate(createDateWithoutTime(parser.parseDate(dateInput)))
+                    break
+                } catch (e: NumberFormatException) {
+                    println("Invalid entry, please try again")
+                } catch (e: StringIndexOutOfBoundsException) {
+                    println("Invalid entry format, please try again")
+                }
+            } else {
+                break
+            }
+        }
+
         println("When do you want to complete the task? Enter in DD/MM/YYYY format")
         while (true) {
             val dateInput = readln().trim()
 
             if (dateInput.isNotBlank()) {
                 try {
-                    taskBuilder.addDate(createDateWithoutTime(parser.parseDate(dateInput)))
+                    taskBuilder.addDateToDo(createDateWithoutTime(parser.parseDate(dateInput)))
                     break
                 } catch (e: NumberFormatException) {
                     println("Invalid entry, please try again")
+                } catch (e: StringIndexOutOfBoundsException) {
+                    println("Invalid entry format, please try again")
                 }
             } else {
                 break
@@ -70,6 +90,15 @@ class CreateFunctions() {
 
 //    val localDateTime = LocalDateTime()
 
+    }
+
+    fun createDashes(longestTaskInProjectSize: Int): String {
+        var numDashes = "-------"
+        for (num in 0..longestTaskInProjectSize) {
+            numDashes += "-"
+        }
+
+        return numDashes
     }
 
 

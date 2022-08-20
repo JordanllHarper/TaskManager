@@ -4,7 +4,7 @@ fun createTestTask(id : Int, title : String, date : LocalDate, projectId : Int, 
     val taskBuilder = TaskBuilder()
     taskBuilder.addId(id)
     taskBuilder.addTitle(title)
-    taskBuilder.addDate(date)
+    taskBuilder.addDueDate(date)
     taskBuilder.addProjectId(projectId)
     taskBuilder.addPriorityLevel(priorityLevel)
     return taskBuilder.returnTask()

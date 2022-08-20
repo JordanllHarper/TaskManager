@@ -16,17 +16,19 @@ object ProjectFactory{
 open class TaskProject(override var projectID: Int,
                        override var title: String) : TaskProjectInterface {
 
+    val creator = CreateFunctions()
+
     override var tasksInProject: ArrayList<Task> = ArrayList()
 
     open fun viewTasksInProject() {
         if (tasksInProject.size == 0) {
-            val dashCount = createDashes(10)
+            val dashCount = creator.createDashes(10)
             println(dashCount)
             println("No tasks in project")
             println(dashCount)
         } else {
             val longestTask = getLongestTaskInProject()
-            val dashCount = createDashes(longestTask.title.length)
+            val dashCount = creator.createDashes(longestTask.title.length)
             for (task: Task in tasksInProject) {
                 println(dashCount)
                 println(task)
@@ -51,14 +53,9 @@ open class TaskProject(override var projectID: Int,
         return currentLongestTask
     }
 
-    fun createDashes(longestTaskInProjectSize : Int) : String{
-        var numDashes = "-------"
-        for (num in 0..longestTaskInProjectSize){
-            numDashes += "-"
-        }
 
-        return numDashes
-    }
+
+
 
 
 
@@ -67,13 +64,13 @@ open class TaskProject(override var projectID: Int,
 class CompletedTasksProject(projectID: Int, title : String) : TaskProject(projectID, title){
     override fun viewTasksInProject() {
         if (tasksInProject.size == 0) {
-            val dashCount = createDashes(10)
+            val dashCount = creator.createDashes(10)
             println(dashCount)
             println("No tasks in project")
             println(dashCount)
         } else {
             val longestTask = getLongestTaskInProject()
-            val dashCount = createDashes(longestTask.title.length)
+            val dashCount = creator.createDashes(longestTask.title.length)
             for (task: Task in tasksInProject) {
                 println(dashCount)
                 println(task)
