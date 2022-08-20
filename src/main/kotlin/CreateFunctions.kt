@@ -72,5 +72,14 @@ class CreateFunctions() {
 
     }
 
+    fun createDashes(longestTaskInProjectSize: Int): String {
+        var numDashes = "-------"
+        for (num in 0..longestTaskInProjectSize) {
+            numDashes += "-"
+        }
+
+        return numDashes
+    }
+
 
 }

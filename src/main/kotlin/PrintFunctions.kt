@@ -6,8 +6,9 @@ class PrintFunctions() {
     }
 
     private fun printAllProjects(projectList: ArrayList<TaskProject>) {
-        for (TaskProject in projectList) {
-            println("ID: ${TaskProject.projectID}\n${TaskProject.title}")
+
+        for (project in projectList) {
+            println(project)
         }
     }
 }

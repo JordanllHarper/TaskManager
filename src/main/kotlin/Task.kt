@@ -38,7 +38,7 @@ open class Task(
             }
         }
 
-
+    //todo
     val dateToDoFormatted: String
         get() {
             return if (dateToDo == null) {
@@ -50,7 +50,7 @@ open class Task(
 
 
     override fun toString(): String {
-        return "Title: $title\nDue Date: $dueDateformatted\nPriority: $priorityLevel"
+        return "ID: $taskID\nTitle: $title\nDue Date: $dueDateformatted\nPriority: $priorityLevel"
     }
 
 
