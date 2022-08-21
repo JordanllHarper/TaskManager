@@ -1,5 +1,8 @@
+import java.lang.Exception
 import java.lang.NumberFormatException
+import java.time.DateTimeException
 import java.time.LocalDate
+import java.util.Date
 
 class CreateFunctions() {
     val selector = SelectFunctions()
@@ -78,11 +81,19 @@ class CreateFunctions() {
 
             if (dateInput.isNotBlank()) {
                 try {
-                    return createDateWithoutTime(parser.parseDate(dateInput))
+                    val dateObj = createDateWithoutTime(parser.parseDate(dateInput))
+                    if (dateObj.isBefore(LocalDate.now())){
+                        throw Exception()
+                    } else{
+                        return dateObj
+
+                    }
                 } catch (e: NumberFormatException) {
                     println("Invalid entry, please try again")
                 } catch (e: StringIndexOutOfBoundsException) {
                     println("Invalid entry format, please try again")
+                } catch (e: Exception){
+                    println("The date entered is before today's date, please try again")
                 }
             } else {
                 return null
