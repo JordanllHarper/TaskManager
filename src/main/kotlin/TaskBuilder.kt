@@ -39,7 +39,7 @@ class TaskBuilder() {
     }
 
     fun returnTask(): Task {
-        return Task(taskID, title, projectId, priorityLevel, dueDate)
+        return Task(taskID, title, projectId, priorityLevel, dueDate, dateToDo)
     }
 
 

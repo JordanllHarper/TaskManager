@@ -37,22 +37,7 @@ class CreateFunctions() {
         taskBuilder.addDueDate(createDate())
 
         println("When do you want to complete the task? Enter in DD/MM/YYYY format")
-        while (true) {
-            val dateInput = readln().trim()
-
-            if (dateInput.isNotBlank()) {
-                try {
-                    taskBuilder.addDateToDo(createDateWithoutTime(parser.parseDate(dateInput)))
-                    break
-                } catch (e: NumberFormatException) {
-                    println("Invalid entry, please try again")
-                } catch (e: StringIndexOutOfBoundsException) {
-                    println("Invalid entry format, please try again")
-                }
-            } else {
-                break
-            }
-        }
+        taskBuilder.addDateToDo(createDate())
 
         return taskBuilder.returnTask()
 
