@@ -40,12 +40,13 @@ open class Task(
 
     override fun toString(): String {
 
-        return "ID: ${taskID}\nTitle: $title\nDue Date: ${getDateFormatted(dueDate)}\nDate to do: ${
-            getDateFormatted(
-                dateToDo
-            )
-        }\n" +
-                "Priority: $priorityLevel"
+        return "[${taskID}] -- $title\n    |-> Due Date: ${getDateFormatted(dueDate)}\n" +
+                "    |-> Date to do: ${
+                    getDateFormatted(
+                        dateToDo
+                    )
+                }\n" +
+                "    |-> Priority: $priorityLevel"
 
     }
 

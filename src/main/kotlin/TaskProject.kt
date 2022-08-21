@@ -59,9 +59,10 @@ open class TaskProject(
 
     override fun toString(): String {
 
-        creator.createDashes(10)
-        return "${creator.createDashes(10)}\nID: $projectID\nTitle: $title\nNumber of tasks: ${getCountOfTasks()}\n" +
-                creator.createDashes(10)
+
+        return "${creator.createDashes(20)}\n[$projectID] -- $title" +
+                "\n     | Number of tasks: ${getCountOfTasks()} |\n" +
+                creator.createDashes(20)
 
     }
 
