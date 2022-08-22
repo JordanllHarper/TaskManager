@@ -1,3 +1,4 @@
+import Enums.PriorityLevel
 import java.time.LocalDate
 
 fun createTestTask(id : Int, title : String, date : LocalDate, projectId : Int, priorityLevel: PriorityLevel): Task {
@@ -36,7 +37,6 @@ fun main() {
 
     projectList.add(personal)
     projectList.add(work)
-
 
 
     val taskManagerInstance = TaskManager(projectList, completedTasks)

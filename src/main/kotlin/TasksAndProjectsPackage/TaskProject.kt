@@ -1,3 +1,5 @@
+import CreatePackage.CreationFunctions
+
 interface TaskProjectInterface {
     var projectID: Int
     var title: String
@@ -54,7 +56,6 @@ open class TaskProject(
         }
         return currentLongestTask
     }
-
 
 
     override fun toString(): String {

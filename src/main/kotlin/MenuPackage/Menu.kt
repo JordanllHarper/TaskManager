@@ -1,3 +1,7 @@
+package MenuPackage
+
+import CreatePackage.CreationFunctions
+
 class Menu(
     private val viewTaskSelectionNum: Int,
     private val addTaskSelectionNum: Int,

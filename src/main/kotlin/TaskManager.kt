@@ -1,4 +1,8 @@
-
+import CreatePackage.CreateProject
+import CreatePackage.CreateTask
+import DeleteCompletePackage.DeleteCompleteFunctions
+import EditPackage.EditFunctions
+import MenuPackage.Menu
 
 open class TaskManager(private var projectList: ArrayList<TaskProject>, private var completedTasks: TaskProject) {
     private val viewTaskSelectionNum = 1
@@ -9,7 +13,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
     private val deleteProjectSelectionNum = 6
     private val viewCompletedTasksSelectionNum = 7
     private val exitSelectionNum = 8
-    
+
     private val deleterCompleter = DeleteCompleteFunctions()
     private val editor = EditFunctions()
 

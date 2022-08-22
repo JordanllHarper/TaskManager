@@ -1,3 +1,12 @@
+package EditPackage
+
+import CreatePackage.CreationFunctions
+import PriorityLevelSelector
+import SelectPackage.SelectFunctions
+import Enums.TaskAttributes
+import TaskProject
+import TaskSelector
+
 class EditFunctions {
     val selector = SelectFunctions()
     val creator = CreationFunctions()

@@ -1,3 +1,8 @@
+package PrintPackage
+
+import Task
+import TaskProject
+
 class PrintFunctions() {
 
     fun getProjectPrompt(projectList: ArrayList<TaskProject>) {
