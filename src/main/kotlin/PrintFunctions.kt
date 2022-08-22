@@ -11,4 +11,10 @@ class PrintFunctions() {
             println(project)
         }
     }
+
+    fun getTaskPrompt(taskList: ArrayList<Task>) {
+        for (task in taskList) {
+            println(task)
+        }
+    }
 }

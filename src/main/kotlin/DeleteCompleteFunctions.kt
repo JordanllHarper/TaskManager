@@ -4,15 +4,16 @@ import kotlin.collections.ArrayList
 
 class DeleteCompleteFunctions {
 
-    val selector = SelectFunctions()
+    val taskProjectSelector = TaskProjectSelectors()
+    val taskSelector = TaskSelector()
     val printer = PrintFunctions()
-    val creator = CreateFunctions()
+    val creator = CreationFunctions()
 
-    fun completeTask(projectList: ArrayList<TaskProject>, completedTasks: TaskProject) {
+    fun deleteItem(projectList: ArrayList<TaskProject>, completedTasks: TaskProject) {
         println("Which project is the task in?")
 
         while (true) {
-            val projectSelectionInput = selector.selectProjectWithValidation(projectList)
+            val projectSelectionInput = taskProjectSelector.selectItem(projectList)
 
             if (projectSelectionInput.getCountOfTasks() == 0) {
                 println(creator.createDashes(20))
@@ -21,12 +22,11 @@ class DeleteCompleteFunctions {
                 break
             } else {
                 println("Which task do you want to complete?")
-                val taskToComplete = selector.selectTaskWithValidation(projectSelectionInput)
+                val taskToComplete = taskSelector.selectItem(projectSelectionInput.tasksInProject)
 
                 projectSelectionInput.removeTaskFromProject(taskToComplete)
 
                 completedTasks.addTask(taskToComplete)
-
                 break
             }
 
@@ -36,7 +36,7 @@ class DeleteCompleteFunctions {
 
     }
 
-    fun deleteProject(projectList: ArrayList<TaskProject>) {
+    fun deleteItem(projectList: ArrayList<TaskProject>) {
         var validInput = false
         println("Which project do you want to delete? Type the ID or type any other number to exit!\nNote: you cannot delete the inbox project")
 
@@ -44,7 +44,7 @@ class DeleteCompleteFunctions {
         while (!validInput) {
             println("Which project do you wish to delete?")
             printer.getProjectPrompt(projectList)
-            val projectSelection = selector.selectProjectWithValidation(projectList)
+            val projectSelection = taskProjectSelector.selectItem(projectList)
 
             if (projectSelection.projectID == 1) {
                 println("Going to main menu...")
