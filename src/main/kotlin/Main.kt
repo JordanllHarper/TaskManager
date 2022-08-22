@@ -7,7 +7,7 @@ fun createTestTask(id : Int, title : String, date : LocalDate, projectId : Int, 
     taskBuilder.addDueDate(date)
     taskBuilder.addProjectId(projectId)
     taskBuilder.addPriorityLevel(priorityLevel)
-    return taskBuilder.returnTask()
+    return taskBuilder.returnT()
 }
 
 fun main() {

@@ -42,14 +42,19 @@ class CreateFunctions() {
         println("When do you want to complete the task? Enter in DD/MM/YYYY format")
         taskBuilder.addDateToDo(createDate())
 
-        return taskBuilder.returnTask()
+        return TaskFactory.createTask(taskBuilder)
 
     }
 
     fun createProject(projectList: ArrayList<TaskProject>): TaskProject {
+        val projectBuilder = TaskProjectBuilder()
         println("Give your project a name: ")
-        val name = readln()
-        return ProjectFactory.TaskProjectFactory(selector.getNextAvailableProjectId(projectList), name)
+        val projectTitleInput = readln()
+        if (projectTitleInput.isNotBlank()) {
+            projectBuilder.addTitle(readln().trim())
+        }
+        projectBuilder.addId(selector.getNextAvailableProjectId(projectList))
+        return TaskProjectFactory.createProject(projectBuilder)
     }
 
     fun createDateWithoutTime(stringDateChars: String): LocalDate {

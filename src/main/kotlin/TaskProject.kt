@@ -7,9 +7,9 @@ interface TaskProjectInterface {
 
 }
 
-object ProjectFactory {
-    fun TaskProjectFactory(projectID: Int, title: String): TaskProject {
-        return TaskProject(projectID, title)
+object TaskProjectFactory {
+    fun createProject(projectBuilder: TaskProjectBuilder): TaskProject {
+        return projectBuilder.returnT()
     }
 }
 

@@ -10,6 +10,12 @@ interface TaskInterface {
 
 }
 
+object TaskFactory {
+    fun createTask(taskBuilder: TaskBuilder): Task {
+        return taskBuilder.returnT()
+    }
+}
+
 open class Task(
     override val taskID: Int = 1,
     override var title: String = "no_title",
@@ -22,6 +28,7 @@ open class Task(
 
 
 ) : TaskInterface {
+
 
     fun getDateFormatted(dateToFormat: LocalDate?): String {
         return if (dateToFormat == null) {
