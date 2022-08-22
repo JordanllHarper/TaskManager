@@ -1,3 +1,10 @@
+package DeleteCompletePackage
+
+import CreatePackage.CreationFunctions
+import PrintPackage.PrintFunctions
+import TaskProject
+import TaskProjectSelectors
+import TaskSelector
 import java.lang.IndexOutOfBoundsException
 import java.util.*
 import kotlin.collections.ArrayList
