@@ -18,7 +18,7 @@ open class TaskProject(
     override var title: String
 ) : TaskProjectInterface {
 
-    val creator = CreateFunctions()
+    val creator = CreationFunctions()
 
     override var tasksInProject: ArrayList<Task> = ArrayList()
 

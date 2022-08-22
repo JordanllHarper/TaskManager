@@ -9,9 +9,7 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
     private val deleteProjectSelectionNum = 6
     private val viewCompletedTasksSelectionNum = 7
     private val exitSelectionNum = 8
-
-    private val creator = CreateFunctions()
-    private val selector = SelectFunctions()
+    
     private val deleterCompleter = DeleteCompleteFunctions()
     private val editor = EditFunctions()
 
@@ -31,33 +29,35 @@ open class TaskManager(private var projectList: ArrayList<TaskProject>, private 
         while (programRun) {
             when (menu.userMenu()) {
                 viewTaskSelectionNum -> {
-                    val selection = selector.selectProjectWithValidation(projectList)
+                    val selection = TaskProjectSelectors().selectItem(projectList)
                     selection.viewTasksInProject()
                 }
 
                 addTaskSelectionNum -> {
-                    val newTask = creator.createTask(projectList)
+                    val newTask = CreateTask().createTask(projectList)
                     appendTaskToProject(newTask)
                     println("Task added")
                 }
 
                 editTaskSelectionNum -> {
                     println("Which project is the task you want to edit in?")
-                    val projectSelection = selector.selectProjectWithValidation(projectList)
+                    val projectSelection = TaskProjectSelectors().selectItem(projectList)
                     editor.editTask(projectSelection)
                 }
 
                 deleteTaskSelectionNum -> {
-                    deleterCompleter.completeTask(projectList, completedTasks)
+                    deleterCompleter.deleteItem(projectList, completedTasks)
                     println("Task completed!")
                 }
 
+
                 addProjectSelectionNum -> {
-                    projectList.add(creator.createProject(projectList))
+                    val newProject = CreateProject().createProject(projectList)
+                    projectList.add(newProject)
                     println("Project added")
                 }
 
-                deleteProjectSelectionNum -> deleterCompleter.deleteProject(projectList)
+                deleteProjectSelectionNum -> deleterCompleter.deleteItem(projectList)
                 viewCompletedTasksSelectionNum -> viewAllCompletedTasks()
                 exitSelectionNum -> {
                     println("Exiting")
